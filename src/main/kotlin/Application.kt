@@ -7,12 +7,12 @@ fun main(args: Array<String>) {
         it.environment = "QA"
         it.release = "0.1.0"
     }
-    startApp()
+    startApp("Test Message")
 }
 
-fun startApp() {
+fun startApp(message: String) {
     try {
-        throw Exception("Test Exception")
+        throw Exception(message)
     } catch (e: Exception) {
         Sentry.captureException(e)
     }
