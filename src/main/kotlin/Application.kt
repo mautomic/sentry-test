@@ -5,15 +5,15 @@ fun main(args: Array<String>) {
     Sentry.init {
         it.dsn = args[0]
         it.environment = "QA"
-        it.release = "0.1.0"
+        it.release = "0.1.1"
     }
-    startApp("Test Message")
+    startApp("Different Test Message")
 }
 
 fun startApp(message: String) {
     try {
-        throw Exception(message)
-    } catch (e: Exception) {
+        throw IllegalAccessException(message)
+    } catch (e: IllegalAccessException) {
         Sentry.captureException(e)
     }
 }

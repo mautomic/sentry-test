@@ -1,4 +1,4 @@
-name: CI
+name: Sentry-Release
 
 # Controls when the action will run. 
 on:
@@ -33,3 +33,4 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: QA
+          version: 0.1.1
