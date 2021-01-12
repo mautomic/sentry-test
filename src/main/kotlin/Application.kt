@@ -1,4 +1,6 @@
 import io.sentry.Sentry
+import io.sentry.SentryEvent
+import io.sentry.SentryLevel
 
 fun main(args: Array<String>) {
 
@@ -11,6 +13,9 @@ fun main(args: Array<String>) {
 }
 
 fun startApp(message: String) {
+
+    Sentry.captureMessage("Started application successfully", SentryLevel.INFO)
+
     try {
         throw IllegalAccessException(message)
     } catch (e: IllegalAccessException) {
