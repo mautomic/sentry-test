@@ -1,22 +1,21 @@
 import io.sentry.Sentry
-import io.sentry.SentryEvent
-import io.sentry.SentryLevel
+import java.lang.IllegalStateException
 
 fun main(args: Array<String>) {
 
     Sentry.init {
         it.dsn = args[0]
         it.environment = "QA"
-        it.release = "0.1.2"
+        it.release = "v0.1.3"
     }
-    startApp("Latest Test Message")
+    startApp("Another Test Message")
 }
 
 fun startApp(message: String) {
 
     try {
-        throw IllegalAccessException(message)
-    } catch (e: IllegalAccessException) {
+        throw IllegalStateException(message)
+    } catch (e: IllegalStateException) {
         Sentry.captureException(e)
     }
 }
