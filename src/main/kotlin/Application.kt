@@ -4,7 +4,7 @@ import java.lang.IllegalStateException
 fun main(args: Array<String>) {
 
     Sentry.init {
-        it.dsn = args[0]
+        it.dsn = if (args.size > 0) args[0] else ""
         it.environment = "QA"
         it.release = "v0.1.3"
     }
