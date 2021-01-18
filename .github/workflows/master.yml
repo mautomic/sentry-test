@@ -24,5 +24,5 @@ jobs:
           ls
           cd build/libs
           echo '${{ secrets.SERVER_PEM }}' >> key.txt
-          scp -i key.txt * ${{ secrets.SERVER }}:~/deployments/
+          scp -o StrictHostKeyChecking=no -i key.txt * ${{ secrets.SERVER }}:~/deployments/
           rm key.txt
