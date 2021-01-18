@@ -18,8 +18,12 @@ jobs:
           java-version: 11.0.2
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
+      - name: Build with Gradle and Deploy JAR
         run: |
           ./gradlew build
           pwd
           ls
+          cd build/libs
+          cat ${{ secrets.SERVER_PEM }} >> key.pem
+          ls
+          scp -i key.pem * ${{ secrets.SERVER }}:~/deployments
