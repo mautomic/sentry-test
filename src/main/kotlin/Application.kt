@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     Sentry.init {
         it.dsn = if (args.size > 0) args[0] else ""
         it.environment = "QA"
-        it.release = "v0.1.5"
+        it.release = "v0.1.6"
     }
     startApp("Final Test Message")
 }
